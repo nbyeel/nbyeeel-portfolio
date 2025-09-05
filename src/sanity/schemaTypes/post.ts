@@ -11,7 +11,7 @@ const textWithTypography = {
       title: 'Text Content',
       type: 'text',
       rows: 4,
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'letterSpacing',
@@ -71,8 +71,8 @@ const textWithTypography = {
       title: 'Custom Font Size (px)',
       type: 'number',
       description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-      hidden: ({ parent }) => parent?.fontSize !== 'custom',
-      validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+      hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+      validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
     },
   ],
   preview: {
@@ -83,7 +83,7 @@ const textWithTypography = {
       fontSize: 'fontSize',
       customFontSize: 'customFontSize',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       const { text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
       const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
       const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -104,7 +104,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -114,7 +114,7 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     }),
     defineField({
       name: 'hook',
@@ -127,7 +127,7 @@ export default defineType({
           type: 'text',
           rows: 2,
           description: 'A short, compelling line (1-2 sentences) to hook the reader and grab their attention',
-          validation: (Rule) => Rule.max(200).warning('Hook should be brief and impactful'),
+          validation: (Rule: any) => Rule.max(200).warning('Hook should be brief and impactful'),
         },
         {
           name: 'letterSpacing',
@@ -187,8 +187,8 @@ export default defineType({
           title: 'Custom Font Size (px)',
           type: 'number',
           description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-          hidden: ({ parent }) => parent?.fontSize !== 'custom',
-          validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+          hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+          validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
         },
       ],
       preview: {
@@ -199,7 +199,7 @@ export default defineType({
           fontSize: 'fontSize',
           customFontSize: 'customFontSize',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
           const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
           const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -231,7 +231,7 @@ export default defineType({
           title: 'Introduction Headline',
           type: 'string',
           description: 'Custom headline for the introduction section (e.g., "Introduction", "Getting Started", "Overview")',
-          validation: (Rule) => Rule.max(100).warning('Headline should be concise and clear'),
+          validation: (Rule: any) => Rule.max(100).warning('Headline should be concise and clear'),
         },
         {
           name: 'text',
@@ -239,7 +239,7 @@ export default defineType({
           type: 'text',
           rows: 4,
           description: 'Opening paragraph that hooks the reader and introduces the topic',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'letterSpacing',
@@ -299,8 +299,8 @@ export default defineType({
           title: 'Custom Font Size (px)',
           type: 'number',
           description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-          hidden: ({ parent }) => parent?.fontSize !== 'custom',
-          validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+          hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+          validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
         },
       ],
       preview: {
@@ -312,7 +312,7 @@ export default defineType({
           fontSize: 'fontSize',
           customFontSize: 'customFontSize',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { headline, text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
           const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
           const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -387,7 +387,7 @@ export default defineType({
             },
           ],
           description: 'The main content of your blog post. Use the rich text editor to format your content.',
-          validation: (Rule) => Rule.required().min(1),
+          validation: (Rule: any) => Rule.required().min(1),
         },
         {
           name: 'letterSpacing',
@@ -448,8 +448,8 @@ export default defineType({
           title: 'Custom Font Size (px)',
           type: 'number',
           description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-          hidden: ({ parent }) => parent?.fontSize !== 'custom',
-          validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+          hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+          validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
         },
       ],
       preview: {
@@ -460,7 +460,7 @@ export default defineType({
           fontSize: 'fontSize',
           customFontSize: 'customFontSize',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { content, letterSpacing, lineHeight, fontSize, customFontSize } = selection
           const hasContent = content && content.length > 0
           const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -482,7 +482,7 @@ export default defineType({
           type: 'text',
           rows: 4,
           description: 'Closing thoughts that summarize the key points and provide a satisfying ending',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'letterSpacing',
@@ -542,8 +542,8 @@ export default defineType({
           title: 'Custom Font Size (px)',
           type: 'number',
           description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-          hidden: ({ parent }) => parent?.fontSize !== 'custom',
-          validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+          hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+          validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
         },
       ],
       preview: {
@@ -554,7 +554,7 @@ export default defineType({
           fontSize: 'fontSize',
           customFontSize: 'customFontSize',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
           const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
           const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -575,7 +575,7 @@ export default defineType({
           title: 'CTA Title',
           type: 'string',
           description: 'The main CTA text (e.g., "Get Started", "Learn More")',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'description',
@@ -647,8 +647,8 @@ export default defineType({
               title: 'Custom Font Size (px)',
               type: 'number',
               description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-              hidden: ({ parent }) => parent?.fontSize !== 'custom',
-              validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+              hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+              validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
             },
           ],
           preview: {
@@ -659,7 +659,7 @@ export default defineType({
               fontSize: 'fontSize',
               customFontSize: 'customFontSize',
             },
-            prepare(selection) {
+            prepare(selection: any) {
               const { text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
               const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
               const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -675,14 +675,14 @@ export default defineType({
           title: 'Button Text',
           type: 'string',
           description: 'Text for the action button',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'buttonUrl',
           title: 'Button URL',
           type: 'url',
           description: 'Where the button should link to',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'buttonStyle',
@@ -711,7 +711,7 @@ export default defineType({
           buttonText: 'buttonText',
           buttonUrl: 'buttonUrl',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { title, buttonText, buttonUrl } = selection
           return {
             title: title || 'Call-to-Action',
@@ -730,7 +730,7 @@ export default defineType({
           title: 'Author Name',
           type: 'string',
           description: 'Full name of the author',
-          validation: (Rule) => Rule.required(),
+          validation: (Rule: any) => Rule.required(),
         },
         {
           name: 'avatar',
@@ -811,8 +811,8 @@ export default defineType({
               title: 'Custom Font Size (px)',
               type: 'number',
               description: 'Enter custom font size in pixels (e.g., 9, 11, 15, etc.)',
-              hidden: ({ parent }) => parent?.fontSize !== 'custom',
-              validation: (Rule) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
+              hidden: ({ parent }: any) => parent?.fontSize !== 'custom',
+              validation: (Rule: any) => Rule.min(5).max(50).warning('Font size should be between 5px and 50px'),
             },
           ],
           preview: {
@@ -823,7 +823,7 @@ export default defineType({
               fontSize: 'fontSize',
               customFontSize: 'customFontSize',
             },
-            prepare(selection) {
+            prepare(selection: any) {
               const { text, letterSpacing, lineHeight, fontSize, customFontSize } = selection
               const preview = text ? text.substring(0, 50) + (text.length > 50 ? '...' : '') : 'No text'
               const finalFontSize = fontSize === 'custom' ? `${customFontSize}px` : fontSize
@@ -873,7 +873,7 @@ export default defineType({
           avatar: 'avatar',
           bio: 'bio',
         },
-        prepare(selection) {
+        prepare(selection: any) {
           const { name, avatar, bio } = selection
           const bioPreview = bio ? bio.substring(0, 60) + (bio.length > 60 ? '...' : '') : 'No bio'
           return {
@@ -895,7 +895,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     }),
   ],
   preview: {
@@ -905,7 +905,7 @@ export default defineType({
       publishedAt: 'publishedAt',
       coverImage: 'coverImage',
     },
-    prepare(selection) {
+    prepare(selection: any) {
       const { title, author, publishedAt, coverImage } = selection
       const date = publishedAt ? new Date(publishedAt).toLocaleDateString() : 'Not published'
       return {
