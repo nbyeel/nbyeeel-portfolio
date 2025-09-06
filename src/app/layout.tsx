@@ -95,7 +95,7 @@ export default function RootLayout({
           <ErrorSuppressor />
           <Navigation />
           {children}
-          <WhatsAppButton phoneNumber="03443814208" />
+          <WhatsAppButton phoneNumber="923443814208" />
           <Analytics />
         </ThemeProvider>
       </body>

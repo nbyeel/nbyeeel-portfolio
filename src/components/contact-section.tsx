@@ -51,7 +51,7 @@ export function ContactSection() {
               Send Email
             </a>
             <a
-              href="https://wa.me/03443814208"
+              href="https://wa.me/923443814208"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-emerald-600 text-emerald-600 dark:text-emerald-400 font-semibold rounded-full hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors duration-200"
