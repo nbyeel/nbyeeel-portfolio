@@ -138,7 +138,7 @@ export function DynamicCaseStudy({ project }: DynamicCaseStudyProps) {
   }
 
   return (
-    <div className="container-custom px-4">
+    <div className="container-custom">
       {/* Back Button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -301,7 +301,7 @@ export function DynamicCaseStudy({ project }: DynamicCaseStudyProps) {
               const getLayoutClass = () => {
                 switch (screenshot.orientation) {
                   case 'portrait': return 'max-w-6xl mx-auto' // Full width for portrait to accommodate left-right layout
-                  case 'landscape': return 'max-w-6xl mx-auto' // Wide for landscape
+                  case 'landscape': return 'max-w-full sm:max-w-6xl mx-auto' // Full width on mobile, constrained on desktop
                   case 'square': return 'max-w-4xl mx-auto' // Balanced for square
                   default: return 'max-w-4xl mx-auto'
                 }
@@ -573,7 +573,7 @@ export function DynamicCaseStudy({ project }: DynamicCaseStudyProps) {
                            alt={getMediaTitle()}
                            fallbackLetter={getFallbackLetter(project.slug.current)}
                            fallbackGradient={getFallbackGradient(project.slug.current)}
-                               className={`w-full ${screenshot.orientation === 'portrait' ? 'aspect-[11/20]' : screenshot.orientation === 'square' ? 'aspect-square' : 'aspect-video'} object-contain`}
+                               className={`w-full ${screenshot.orientation === 'portrait' ? 'aspect-[11/20]' : screenshot.orientation === 'square' ? 'aspect-square' : 'aspect-[4/3] sm:aspect-video'} object-contain`}
                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 1200px"
                          />
                            </div>
