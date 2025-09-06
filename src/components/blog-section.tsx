@@ -106,17 +106,17 @@ export function BlogSection() {
 
   return (
     <section className="py-24 bg-white dark:bg-[#18181B]" id="blog">
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 lg:px-24 pb-2 md:pb-20">
+      <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-24 pb-2 md:pb-20">
         <div className="mb-32 relative h-96">
           <h1 
-            className="font-neue-montreal-medium pointer-events-none absolute top-0 left-0 z-0 w-auto overflow-hidden capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 text-[80px] lg:text-[200px] xl:text-[300px]"
+            className="font-neue-montreal-medium pointer-events-none absolute top-0 left-0 z-0 w-auto overflow-hidden capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 text-[60px] sm:text-[80px] lg:text-[200px] xl:text-[300px]"
             style={{ fontFamily: 'Neue Montreal, sans-serif', fontWeight: '500', textShadow: '0 0 0.5px currentColor' }}
           >
             Blog
             <div className="absolute bottom-0 left-0 size-full bg-gradient-to-b from-transparent via-white/90 via-65% to-white dark:via-zinc-900 dark:to-zinc-900"></div>
           </h1>
-          <div className="absolute top-64 -left-3 z-10 w-full">
-            <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-lg pl-4" style={{ fontSize: '17px', fontWeight: '350' }}>
+          <div className="absolute top-32 sm:top-48 md:top-64 -left-1 sm:-left-2 md:-left-3 z-10 w-full">
+            <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-sm sm:text-base md:text-lg pl-2 sm:pl-3 md:pl-4" style={{ fontSize: 'clamp(14px, 2vw, 17px)', fontWeight: '350' }}>
               <span className="text-[#a1a1aa] dark:text-[#52525B]">
                 This is where I try to write and share insights, case studies, and lessons from my<br />
                 experience in UI and UX design. If you are interested in exploring these topics further,<br />
@@ -126,7 +126,7 @@ export function BlogSection() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-6 md:mt-40">
+        <div className="mt-6 sm:mt-8 flex flex-col gap-4 sm:gap-6 md:mt-40">
           {posts && posts.length > 0 ? (
             posts.map((post, index) => (
               <motion.div
@@ -139,11 +139,11 @@ export function BlogSection() {
               >
                                        <Link href={`/posts/article/${post.slug.current}`} className="flex flex-col gap-2">
                   <div className="flex flex-col items-start">
-                    <div className="text-[40px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300 md:text-[60px]">
+                    <div className="text-[28px] sm:text-[32px] md:text-[40px] lg:text-[50px] xl:text-[60px] font-normal leading-tight tracking-tighter text-zinc-700 hover:text-emerald-500 dark:text-zinc-400 dark:hover:text-emerald-300">
                       {post.title}
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 pb-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 pb-2 text-xs sm:text-sm text-gray-400">
                     {new Date(post.publishedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',

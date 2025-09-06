@@ -226,9 +226,9 @@ export function ProjectsSection() {
 
   return (
     <section className="py-24 bg-white dark:bg-[#18181B]">
-      <div className="relative mx-auto w-full max-w-[1440px] px-6 pt-[120px] lg:px-24 pb-2 md:pb-20">
+      <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-6 pt-16 sm:pt-24 md:pt-[120px] lg:px-24 pb-2 md:pb-20">
         {/* Animation placeholder between hero and projects */}
-        <div ref={animationRef} className="flex justify-center items-center py-[100px]">
+        <div ref={animationRef} className="flex justify-center items-center py-12 sm:py-16 md:py-24 lg:py-[100px]">
           <motion.div
             style={{
               width: 'clamp(300px, 35vw, 600px)',
@@ -260,7 +260,7 @@ export function ProjectsSection() {
           </motion.div>
         </div>
 
-        <div id="projects" className="pt-20">
+        <div id="projects" className="pt-8 sm:pt-12 md:pt-16 lg:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -269,7 +269,7 @@ export function ProjectsSection() {
             className="mb-32 relative h-96"
           >
             <h1 
-              className="font-neue-montreal-medium pointer-events-none absolute top-0 left-0 z-0 w-auto overflow-hidden capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 text-[80px] lg:text-[200px] xl:text-[300px]"
+              className="font-neue-montreal-medium pointer-events-none absolute top-0 left-0 z-0 w-auto overflow-hidden capitalize leading-tight tracking-normal text-zinc-300 dark:text-zinc-700 text-[60px] sm:text-[80px] lg:text-[200px] xl:text-[300px]"
               style={{ 
                 fontFamily: 'PP Neue Montreal, sans-serif', 
                 fontWeight: '500',
@@ -280,8 +280,8 @@ export function ProjectsSection() {
               Projects
               <div className="absolute bottom-0 left-0 size-full bg-gradient-to-b from-transparent via-white/90 via-65% to-white dark:via-zinc-900 dark:to-zinc-900"></div>
             </h1>
-            <div className="absolute top-64 left-0 z-10 w-full">
-              <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-lg pl-4" style={{ color: '#a1a1aa', fontSize: '16px', fontWeight: '400' }}>
+            <div className="absolute top-32 sm:top-48 md:top-64 left-0 z-10 w-full">
+              <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-sm sm:text-base md:text-lg pl-2 sm:pl-4" style={{ color: '#a1a1aa', fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: '400' }}>
                 <span className="dark:text-[#52525B]">
                   A showcase of my recent work where design and engineering meets. Each<br />
                   project reflects creativity, functionality, and attention to detail. These projects<br />
@@ -292,7 +292,7 @@ export function ProjectsSection() {
             </div>
           </motion.div>
 
-          <div className="space-y-24">
+          <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
             {projects && projects.length > 0 ? (
               projects.map((project, index) => (
                 <motion.div
@@ -301,10 +301,10 @@ export function ProjectsSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2, delay: index * 0.02 }}
                   viewport={{ once: true }}
-                  className={`group ${index === 0 ? '-ml-8 lg:-ml-16' : index === 1 ? '-mr-8 lg:-mr-16' : ''}`}
+                  className={`group ${index === 0 ? '-ml-2 sm:-ml-4 md:-ml-8 lg:-ml-16' : index === 1 ? '-mr-2 sm:-mr-4 md:-mr-8 lg:-mr-16' : ''}`}
                 >
                   <Link href={`/work/project/${project.slug.current}`} className="block">
-                    <div className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
+                    <div className={`grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 items-center ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
                       <ProjectImage
                         src={project.mainImage ? getImageUrl(project.mainImage.image) : ''}
                         alt={project.mainImage?.alt || project.title}
@@ -317,16 +317,16 @@ export function ProjectsSection() {
 
                       <div className={index % 2 === 1 ? 'md:col-start-1' : ''}>
 
-                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-inter font-black mb-6 leading-tight">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-inter font-black mb-4 sm:mb-6 leading-tight">
                           {project.title}
                         </h3>
 
-                        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed">
                           {project.shortInfo || project.description}
                         </p>
 
                         <div className="flex items-center text-gray-500 dark:text-gray-500">
-                          <span className="text-lg font-medium">View case study</span>
+                          <span className="text-sm sm:text-base md:text-lg font-medium">View case study</span>
                           <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                           </svg>

@@ -84,7 +84,7 @@ export function Hero() {
   const isDarkMode = localTheme === 'dark'
   
   return (
-    <section className="min-h-screen flex justify-center bg-white dark:bg-[#18181B] relative overflow-hidden pt-[25rem]">
+    <section className="min-h-screen flex justify-center bg-white dark:bg-[#18181B] relative overflow-hidden pt-16 sm:pt-32 md:pt-48 lg:pt-[25rem]">
       {/* Dotted Background Layer */}
       <div className="absolute inset-0 flex items-center justify-center">
         {/* Light Mode Dots */}
@@ -352,7 +352,7 @@ export function Hero() {
           </div>
 
           {/* Tagline with PPEditorial font */}
-                 <div className="mt-6 md:mt-5">
+                 <div className="mt-4 sm:mt-6 md:mt-5">
             <p
               className="font-editorial"
               style={{ 

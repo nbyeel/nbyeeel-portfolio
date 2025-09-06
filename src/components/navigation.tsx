@@ -97,29 +97,29 @@ export function Navigation() {
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed inset-x-0 top-10 z-[99999] mx-auto flex max-w-fit items-center justify-center gap-4 space-x-4 rounded-[40px] border border-transparent bg-white/60 py-2 pl-2 pr-6 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] backdrop-blur-lg dark:border-white/[0.1] dark:bg-neutral-800/60"
+      className="fixed inset-x-0 top-4 sm:top-10 z-[99999] mx-auto flex max-w-fit items-center justify-center gap-2 sm:gap-4 space-x-2 sm:space-x-4 rounded-[32px] sm:rounded-[40px] border border-transparent bg-white/60 py-1.5 sm:py-2 pl-1.5 sm:pl-2 pr-4 sm:pr-6 shadow-[0px_8px_12px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] backdrop-blur-lg dark:border-white/[0.1] dark:bg-neutral-800/60"
     >
       {/* Logo - exactly matching jineshb.me two-layer button structure */}
       <button 
         onClick={scrollToHero}
         aria-label="Home page"
-        className="flex-shrink-0 relative mb-1 flex w-auto items-center justify-center rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-8 py-6 text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
+        className="flex-shrink-0 relative mb-1 flex w-auto items-center justify-center rounded-[24px] sm:rounded-[28px] bg-gradient-to-b from-emerald-300 to-emerald-500 px-6 sm:px-8 py-4 sm:py-6 text-lg sm:text-xl font-medium tracking-tighter text-emerald-900 transition-all ease-in-out hover:from-emerald-200 hover:to-emerald-500"
       >
         {/* Shadow layer positioned behind and below the main button */}
-        <span className="absolute bottom-[-6px] left-0 -z-10 size-full rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-5px]"></span>
+        <span className="absolute bottom-[-4px] sm:bottom-[-6px] left-0 -z-10 size-full rounded-[26px] sm:rounded-[30px] bg-emerald-600 transition-all duration-300 group-hover:bottom-[-3px] sm:group-hover:bottom-[-5px]"></span>
         
         {/* Main button content with home icon */}
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
-          width="16" 
-          height="16" 
+          width="14" 
+          height="14" 
           viewBox="0 0 24 24" 
           fill="none" 
           stroke="currentColor" 
           strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round" 
-          className="lucide lucide-home"
+          className="lucide lucide-home sm:w-4 sm:h-4"
         >
           <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
           <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -153,19 +153,19 @@ export function Navigation() {
       <div className="mx-auto flex w-auto items-center justify-center tracking-normal">
         <a 
           href="/live" 
-          className="inline-flex items-center gap-1.5 rounded-full border-2 border-emerald-500 bg-emerald-50 px-3 py-1 text-sm text-emerald-700 transition-colors hover:bg-emerald-400 dark:border-emerald-500 dark:bg-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-700"
+          className="inline-flex items-center gap-1 sm:gap-1.5 rounded-full border-2 border-emerald-500 bg-emerald-50 px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm text-emerald-700 transition-colors hover:bg-emerald-400 dark:border-emerald-500 dark:bg-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-700"
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
+            width="12" 
+            height="12" 
             viewBox="0 0 24 24" 
             fill="none" 
             stroke="currentColor" 
             strokeWidth="2" 
             strokeLinecap="round" 
             strokeLinejoin="round" 
-            className="lucide lucide-radio size-3 animate-pulse"
+            className="lucide lucide-radio size-2.5 sm:size-3 animate-pulse"
           >
             <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
             <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
@@ -180,9 +180,9 @@ export function Navigation() {
       {/* Mobile Menu Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-colors"
+        className="md:hidden p-1.5 sm:p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-colors"
       >
-        {isOpen ? <X className="w-4 h-4 text-gray-300" /> : <Menu className="w-4 h-4 text-gray-300" />}
+        {isOpen ? <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300" /> : <Menu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-300" />}
       </button>
 
       {/* Mobile Navigation Dropdown */}
@@ -191,16 +191,16 @@ export function Navigation() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden absolute top-full left-0 right-0 mt-2 bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-gray-700/50 overflow-hidden"
+          className="md:hidden absolute top-full left-0 right-0 mt-1.5 sm:mt-2 bg-gray-900/95 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-gray-700/50 overflow-hidden"
         >
-          <div className="py-4 px-6 space-y-4">
+          <div className="py-3 sm:py-4 px-4 sm:px-6 space-y-3 sm:space-y-4">
             {navItems.map((item) => (
               item.href ? (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="block text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm font-medium"
                 >
                   {item.label}
                 </Link>
@@ -213,7 +213,7 @@ export function Navigation() {
                     }
                     setIsOpen(false)
                   }}
-                  className="block text-gray-300 hover:text-white transition-colors text-sm font-medium w-full text-left"
+                  className="block text-gray-300 hover:text-white transition-colors text-xs sm:text-sm font-medium w-full text-left"
                 >
                   {item.label}
                 </button>
@@ -221,9 +221,9 @@ export function Navigation() {
             ))}
             
             {/* Mobile Live Indicator */}
-            <div className="flex items-center space-x-2 pt-2 border-t border-gray-700/50">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-emerald-400 text-sm font-medium">Live</span>
+            <div className="flex items-center space-x-1.5 sm:space-x-2 pt-2 border-t border-gray-700/50">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-emerald-400 text-xs sm:text-sm font-medium">Live</span>
             </div>
           </div>
         </motion.div>
