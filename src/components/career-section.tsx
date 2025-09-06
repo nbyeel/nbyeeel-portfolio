@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { testSanityConnection, safeFetch } from '@/lib/sanity'
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 interface CareerItem {
   _id: string
@@ -113,10 +114,7 @@ export function CareerSection() {
           {isLoading ? (
             // Loading state - show subtle loading spinner
             <div className="flex items-center justify-center py-16">
-              <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400">
-                <div className="w-4 h-4 border-2 border-zinc-300 dark:border-zinc-600 border-t-transparent rounded-full animate-spin"></div>
-                <span className="text-sm">Loading career...</span>
-              </div>
+              <LoadingSpinner text="Loading career..." />
             </div>
           ) : (
             // Actual career data

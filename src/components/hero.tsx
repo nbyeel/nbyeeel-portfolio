@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
 import { useTheme } from 'next-themes'
 import dynamic from 'next/dynamic'
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
@@ -67,10 +68,7 @@ export function Hero() {
         <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24 relative z-10">
           <div className="max-w-none text-center">
             <div className="flex items-center justify-center py-16">
-              <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400">
-                <div className="w-4 h-4 border-2 border-zinc-300 dark:border-zinc-600 border-t-transparent rounded-full animate-spin"></div>
-                <span className="text-sm">Loading...</span>
-              </div>
+              <LoadingSpinner text="Loading..." />
             </div>
           </div>
         </div>

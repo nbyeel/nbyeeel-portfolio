@@ -7,6 +7,7 @@ import { client, testSanityConnection, safeFetch, getImageUrl } from '@/lib/sani
 import { ProjectImage } from '@/components/ui/project-image'
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
+import { LoadingSpinner } from '@/components/ui/loading-spinner'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
@@ -216,10 +217,7 @@ export function ProjectsSection() {
       <section className="py-24 bg-white dark:bg-[#18181B]">
         <div className="relative mx-auto w-full max-w-[1440px] px-6 lg:px-24 pb-2 md:pb-20">
           <div className="flex items-center justify-center py-32">
-            <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400">
-              <div className="w-4 h-4 border-2 border-zinc-300 dark:border-zinc-600 border-t-transparent rounded-full animate-spin"></div>
-              <span className="text-sm">Loading projects...</span>
-            </div>
+            <LoadingSpinner text="Loading projects..." />
           </div>
         </div>
       </section>
