@@ -67,9 +67,14 @@ export function Hero() {
       <section className="min-h-screen flex items-center justify-center bg-white dark:bg-[#18181B] relative overflow-hidden pt-32">
         <div className="w-full px-4 sm:px-8 md:px-16 lg:px-24 relative z-10">
           <div className="max-w-none text-center">
-            <div className="flex items-center justify-center py-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center justify-center py-16"
+            >
               <LoadingSpinner text="Loading..." />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

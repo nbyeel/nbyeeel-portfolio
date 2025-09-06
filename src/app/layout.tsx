@@ -7,6 +7,7 @@ import { WhatsAppButton } from '@/components/whatsapp-button'
 import { Analytics } from '@/components/analytics'
 import { GlobalErrorHandler } from '@/components/global-error-handler'
 import { ErrorSuppressor } from '@/components/error-suppressor'
+import { ScrollRestoration } from '@/components/scroll-restoration'
 
 const inter = Inter({ subsets: ['latin'] })
 const spaceMono = Space_Mono({ 
@@ -93,6 +94,7 @@ export default function RootLayout({
         >
           <GlobalErrorHandler />
           <ErrorSuppressor />
+          <ScrollRestoration />
           <Navigation />
           {children}
           <WhatsAppButton phoneNumber="923443814208" />
