@@ -197,8 +197,8 @@ export function ScrollRestoration() {
   // Reset scroll tracking on route change (but not on reload)
   useEffect(() => {
     // Only clear if it's a navigation, not a reload
-    const isReload = performance.navigation?.type === 1 || 
-                     (typeof window !== 'undefined' && window.performance?.getEntriesByType('navigation')[0]?.type === 'reload')
+    const isReload = (performance as any).navigation?.type === 1 || 
+                     (typeof window !== 'undefined' && (window.performance?.getEntriesByType('navigation')[0] as any)?.type === 'reload')
     
     if (!isReload) {
       sessionStorage.removeItem('hasScrolled')
