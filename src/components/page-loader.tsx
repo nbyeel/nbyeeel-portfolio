@@ -15,14 +15,14 @@ export function PageLoader({ children }: PageLoaderProps) {
   useEffect(() => {
     // Handle page reload detection
     const handleLoad = () => {
-      // Small delay to ensure smooth transition
+      // Shorter delay for better scroll restoration
       setTimeout(() => {
         setIsLoading(false)
         // After first load, subsequent loads are not "initial"
         setTimeout(() => {
           setIsInitialLoad(false)
-        }, 100)
-      }, 300)
+        }, 50)
+      }, 150) // Reduced from 300ms to 150ms
     }
 
     // Check if page is already loaded

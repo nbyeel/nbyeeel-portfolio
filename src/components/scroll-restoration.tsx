@@ -9,32 +9,54 @@ export function ScrollRestoration() {
   useEffect(() => {
     // Handle scroll restoration for page reloads
     const handleScrollRestoration = () => {
-      // Only restore scroll position if it's not the initial load
-      if (sessionStorage.getItem('hasScrolled') === 'true') {
-        const savedScrollPosition = sessionStorage.getItem('scrollPosition')
-        if (savedScrollPosition) {
-          const scrollY = parseInt(savedScrollPosition, 10)
-          // Smooth scroll to saved position after a short delay
-          setTimeout(() => {
+      const savedScrollPosition = sessionStorage.getItem('scrollPosition')
+      const savedPath = sessionStorage.getItem('scrollPath')
+      
+      // Only restore if we're on the same path and have a saved position
+      if (savedScrollPosition && savedPath === pathname) {
+        const scrollY = parseInt(savedScrollPosition, 10)
+        
+        // Wait for content to load, then restore position
+        const restoreScroll = () => {
+          // Check if key sections are loaded
+          const heroSection = document.querySelector('section')
+          const projectsSection = document.getElementById('projects')
+          const blogSection = document.getElementById('blog')
+          
+          // Ensure we have content loaded and key sections exist
+          if (document.body.scrollHeight > window.innerHeight && heroSection) {
             window.scrollTo({
               top: scrollY,
-              behavior: 'smooth'
+              behavior: 'auto' // Use 'auto' for immediate positioning
             })
-          }, 100)
+            console.log('Scroll restored to:', scrollY, 'px')
+          } else {
+            // If content not ready, try again
+            setTimeout(restoreScroll, 100)
+          }
         }
+        
+        // Start restoration after page loader finishes
+        setTimeout(restoreScroll, 400) // Increased to work with page loader
       }
     }
 
     // Save scroll position before page unload
     const handleBeforeUnload = () => {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString())
+      sessionStorage.setItem('scrollPath', pathname)
       sessionStorage.setItem('hasScrolled', 'true')
     }
 
-    // Track scroll events
+    // Track scroll events with throttling
+    let scrollTimeout: NodeJS.Timeout
     const handleScroll = () => {
-      sessionStorage.setItem('scrollPosition', window.scrollY.toString())
-      sessionStorage.setItem('hasScrolled', 'true')
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        sessionStorage.setItem('scrollPosition', window.scrollY.toString())
+        sessionStorage.setItem('scrollPath', pathname)
+        sessionStorage.setItem('hasScrolled', 'true')
+      }, 100) // Throttle to avoid excessive writes
     }
 
     // Handle page load
@@ -50,16 +72,22 @@ export function ScrollRestoration() {
 
     // Cleanup
     return () => {
+      clearTimeout(scrollTimeout)
       window.removeEventListener('load', handleScrollRestoration)
       window.removeEventListener('beforeunload', handleBeforeUnload)
       window.removeEventListener('scroll', handleScroll)
     }
   }, [pathname])
 
-  // Reset scroll tracking on route change
+  // Reset scroll tracking on route change (but not on reload)
   useEffect(() => {
-    sessionStorage.removeItem('hasScrolled')
-    sessionStorage.removeItem('scrollPosition')
+    // Only clear if it's a navigation, not a reload
+    const isReload = performance.navigation?.type === 1
+    if (!isReload) {
+      sessionStorage.removeItem('hasScrolled')
+      sessionStorage.removeItem('scrollPosition')
+      sessionStorage.removeItem('scrollPath')
+    }
   }, [pathname])
 
   return null
