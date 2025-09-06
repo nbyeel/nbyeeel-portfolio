@@ -42,6 +42,16 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Scroll restoration improvements */
+html.scroll-restoration-disabled {
+  scroll-behavior: auto !important;
+}
+
+/* Prevent layout shift during scroll restoration */
+body.scroll-restoring {
+  overflow: hidden;
+}
+
 @layer base {
   * {
     box-sizing: border-box;

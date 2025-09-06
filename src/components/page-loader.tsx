@@ -15,20 +15,20 @@ export function PageLoader({ children }: PageLoaderProps) {
   useEffect(() => {
     // Handle page reload detection
     const handleLoad = () => {
-      // Shorter delay for better scroll restoration
+      // Optimized timing for better scroll restoration
       setTimeout(() => {
         setIsLoading(false)
         
-        // Emit custom event for scroll restoration
+        // Emit custom event for scroll restoration with proper timing
         setTimeout(() => {
           window.dispatchEvent(new CustomEvent('pageLoaderComplete'))
-        }, 100)
+        }, 150) // Increased delay to ensure DOM is fully ready
         
         // After first load, subsequent loads are not "initial"
         setTimeout(() => {
           setIsInitialLoad(false)
-        }, 50)
-      }, 200) // Slightly increased for better coordination
+        }, 100)
+      }, 300) // Increased delay for better content readiness
     }
 
     // Check if page is already loaded
