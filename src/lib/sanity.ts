@@ -10,14 +10,6 @@ export const client = createClient({
   token: process.env.SANITY_API_TOKEN,
   perspective: 'published',
   stega: false,
-  // Enhanced timeout and retry configuration
-  requestTimeout: 10000, // 10 seconds
-  retry: {
-    retries: 2,
-    factor: 1.5,
-    minTimeout: 500,
-    maxTimeout: 5000,
-  },
   // Disable credentials to prevent CORS issues
   withCredentials: false,
 })
