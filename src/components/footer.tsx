@@ -28,7 +28,7 @@ export function Footer() {
               letterSpacing: '-3px',
               color: '#34D399'
             }}>
-              Hi, I&apos;m Nabeel, UI & UX Designer based in New York.
+              Hi, I&apos;m Nabeel, UI & UX Designer based in Pakistan.
             </h1>
             <p className="prose mt-8" style={{
               fontFamily: 'PP Neue Montreal, sans-serif',
