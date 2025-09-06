@@ -18,11 +18,17 @@ export function PageLoader({ children }: PageLoaderProps) {
       // Shorter delay for better scroll restoration
       setTimeout(() => {
         setIsLoading(false)
+        
+        // Emit custom event for scroll restoration
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent('pageLoaderComplete'))
+        }, 100)
+        
         // After first load, subsequent loads are not "initial"
         setTimeout(() => {
           setIsInitialLoad(false)
         }, 50)
-      }, 150) // Reduced from 300ms to 150ms
+      }, 200) // Slightly increased for better coordination
     }
 
     // Check if page is already loaded

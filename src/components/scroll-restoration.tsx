@@ -16,28 +16,78 @@ export function ScrollRestoration() {
       if (savedScrollPosition && savedPath === pathname) {
         const scrollY = parseInt(savedScrollPosition, 10)
         
-        // Wait for content to load, then restore position
+        // Multiple attempts with different strategies
+        let attempts = 0
+        const maxAttempts = 20
+        
         const restoreScroll = () => {
-          // Check if key sections are loaded
+          attempts++
+          
+          // Check if content is fully loaded
           const heroSection = document.querySelector('section')
           const projectsSection = document.getElementById('projects')
           const blogSection = document.getElementById('blog')
+          const aboutSection = document.getElementById('about')
+          const careerSection = document.getElementById('career')
           
-          // Ensure we have content loaded and key sections exist
-          if (document.body.scrollHeight > window.innerHeight && heroSection) {
-            window.scrollTo({
-              top: scrollY,
-              behavior: 'auto' // Use 'auto' for immediate positioning
-            })
-            console.log('Scroll restored to:', scrollY, 'px')
+          // More comprehensive content check
+          const hasContent = document.body.scrollHeight > window.innerHeight * 2
+          const hasSections = heroSection && (projectsSection || blogSection || aboutSection || careerSection)
+          const isContentReady = hasContent && hasSections
+          
+          if (isContentReady) {
+            // Force immediate scroll restoration
+            window.scrollTo(0, scrollY)
+            
+            // Multiple fallback methods for stubborn browsers
+            setTimeout(() => {
+              window.scrollTo({
+                top: scrollY,
+                behavior: 'auto'
+              })
+            }, 5)
+            
+            setTimeout(() => {
+              document.documentElement.scrollTop = scrollY
+              document.body.scrollTop = scrollY
+            }, 10)
+            
+            setTimeout(() => {
+              // Final fallback - direct property setting
+              if (document.documentElement.scrollTop !== scrollY) {
+                document.documentElement.scrollTop = scrollY
+              }
+              if (document.body.scrollTop !== scrollY) {
+                document.body.scrollTop = scrollY
+              }
+            }, 15)
+            
+            // Verify restoration was successful
+            setTimeout(() => {
+              const currentScroll = window.scrollY
+              const isAccurate = Math.abs(currentScroll - scrollY) < 50 // Allow 50px tolerance
+              
+              if (isAccurate) {
+                console.log('✅ Scroll restoration successful:', currentScroll, 'px (target:', scrollY, 'px)')
+              } else {
+                console.log('⚠️ Scroll restoration inaccurate:', currentScroll, 'px (target:', scrollY, 'px)')
+                // Try one more time if inaccurate
+                window.scrollTo(0, scrollY)
+              }
+            }, 25)
+          } else if (attempts < maxAttempts) {
+            // If content not ready, try again with increasing delay
+            const delay = Math.min(50 + (attempts * 25), 300)
+            setTimeout(restoreScroll, delay)
           } else {
-            // If content not ready, try again
-            setTimeout(restoreScroll, 100)
+            console.log('Scroll restoration failed after', maxAttempts, 'attempts')
+            console.log('Content check - hasContent:', hasContent, 'hasSections:', hasSections)
+            console.log('Body height:', document.body.scrollHeight, 'Window height:', window.innerHeight)
           }
         }
         
         // Start restoration after page loader finishes
-        setTimeout(restoreScroll, 400) // Increased to work with page loader
+        setTimeout(restoreScroll, 500)
       }
     }
 
@@ -46,6 +96,7 @@ export function ScrollRestoration() {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString())
       sessionStorage.setItem('scrollPath', pathname)
       sessionStorage.setItem('hasScrolled', 'true')
+      sessionStorage.setItem('scrollTimestamp', Date.now().toString())
     }
 
     // Track scroll events with throttling
@@ -56,7 +107,8 @@ export function ScrollRestoration() {
         sessionStorage.setItem('scrollPosition', window.scrollY.toString())
         sessionStorage.setItem('scrollPath', pathname)
         sessionStorage.setItem('hasScrolled', 'true')
-      }, 100) // Throttle to avoid excessive writes
+        sessionStorage.setItem('scrollTimestamp', Date.now().toString())
+      }, 50) // Reduced throttle for more accurate tracking
     }
 
     // Handle page load
@@ -65,6 +117,13 @@ export function ScrollRestoration() {
     } else {
       window.addEventListener('load', handleScrollRestoration)
     }
+
+    // Listen for custom event from page loader
+    const handlePageLoaderComplete = () => {
+      setTimeout(handleScrollRestoration, 100)
+    }
+    
+    window.addEventListener('pageLoaderComplete', handlePageLoaderComplete)
 
     // Add event listeners
     window.addEventListener('beforeunload', handleBeforeUnload)
@@ -76,6 +135,7 @@ export function ScrollRestoration() {
       window.removeEventListener('load', handleScrollRestoration)
       window.removeEventListener('beforeunload', handleBeforeUnload)
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('pageLoaderComplete', handlePageLoaderComplete)
     }
   }, [pathname])
 
@@ -87,6 +147,7 @@ export function ScrollRestoration() {
       sessionStorage.removeItem('hasScrolled')
       sessionStorage.removeItem('scrollPosition')
       sessionStorage.removeItem('scrollPath')
+      sessionStorage.removeItem('scrollTimestamp')
     }
   }, [pathname])
 
