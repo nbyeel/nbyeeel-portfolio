@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 export function ScrollRestoration() {
   const pathname = usePathname()
   const isRestoringRef = useRef(false)
-  const restorationTimeoutRef = useRef<NodeJS.Timeout>()
+  const restorationTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
   useEffect(() => {
     // Handle scroll restoration for page reloads
