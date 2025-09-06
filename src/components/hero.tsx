@@ -115,8 +115,8 @@ export function Hero() {
               <div 
                 className="relative mx-6"
                 style={{
-                  width: 'clamp(100px, 15vw, 162px)',
-                  height: 'clamp(60px, 8vw, 100px)'
+                  width: 'clamp(80px, 15vw, 162px)',
+                  height: 'clamp(50px, 8vw, 100px)'
                 }}
               >
                 {/* Modern Toggle Button Container */}
@@ -135,9 +135,9 @@ export function Hero() {
                     <div
                       className="absolute top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-center rounded-[32px] p-4 lg:p-8 transition-all duration-300 ease-in-out hover:scale-[0.98]"
                       style={{
-                        width: 'clamp(60px, 12vw, 80px)',
+                        width: 'clamp(50px, 12vw, 80px)',
                         height: 'calc(100% - 8px)',
-                        left: 'clamp(10px, 2vw, 13px)',
+                        left: 'clamp(8px, 2vw, 13px)',
                         transformOrigin: 'center center'
                       }}
                     >
@@ -152,8 +152,8 @@ export function Hero() {
                         }`}
                         onClick={handleThemeToggle}
                         style={{
-                          width: 'clamp(70px, 13vw, 90px)',
-                          height: 'clamp(62px, 10vw, 82px)',
+                          width: 'clamp(60px, 13vw, 90px)',
+                          height: 'clamp(52px, 10vw, 82px)',
                           border: isDarkMode ? '1px solid #5e5e61' : '1px solid rgba(0,0,0,0.1)',
                         }}
                       >
