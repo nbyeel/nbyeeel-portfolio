@@ -108,12 +108,12 @@ export function Hero() {
             }}
           >
             {/* Line 1: UI & UX designer with modern toggle button */}
-            <div className="flex items-center justify-center flex-wrap mb-[-0.5rem]">
+            <div className="flex items-center justify-center flex-wrap mb-[-0.5rem] gap-1 sm:gap-2 md:gap-0">
               <span style={{ 
                 fontWeight: '500'
               }}>Ui & UX</span>
               <div 
-                className="relative mx-6"
+                className="relative mx-2 sm:mx-4 md:mx-6"
                 style={{
                   width: 'clamp(80px, 15vw, 162px)',
                   height: 'clamp(50px, 8vw, 100px)'
