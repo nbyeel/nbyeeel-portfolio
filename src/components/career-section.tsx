@@ -91,8 +91,8 @@ export function CareerSection() {
             Career
             <div className="absolute bottom-0 left-0 size-full bg-gradient-to-b from-transparent via-white/90 via-65% to-white dark:via-zinc-900 dark:to-zinc-900"></div>
           </h1>
-          <div className="absolute top-64 -left-3 z-10 w-full">
-            <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-lg pl-4" style={{ fontSize: '16px', fontWeight: '350' }}>
+          <div className="absolute top-20 sm:top-32 md:top-48 lg:top-64 -left-1 sm:-left-2 md:-left-3 z-10 w-full">
+            <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-sm sm:text-base md:text-lg pl-2 sm:pl-3 md:pl-4" style={{ fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: '350' }}>
               <span className="text-[#a1a1aa] dark:text-[#52525B]">
                 I have been working as a UI/UX designer and developer for the past four years, specializing<br />
                 in comprehensive digital solutions. Joined as a junior designer and now lead end-to-end<br />

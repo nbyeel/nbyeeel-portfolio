@@ -280,7 +280,7 @@ export function ProjectsSection() {
               Projects
               <div className="absolute bottom-0 left-0 size-full bg-gradient-to-b from-transparent via-white/90 via-65% to-white dark:via-zinc-900 dark:to-zinc-900"></div>
             </h1>
-            <div className="absolute top-32 sm:top-48 md:top-64 left-0 z-10 w-full">
+            <div className="absolute top-20 sm:top-32 md:top-48 lg:top-64 left-0 z-10 w-full">
               <p className="w-full max-w-4xl leading-tight text-zinc-300 dark:text-zinc-300 text-sm sm:text-base md:text-lg pl-2 sm:pl-4" style={{ color: '#a1a1aa', fontSize: 'clamp(14px, 2vw, 16px)', fontWeight: '400' }}>
                 <span className="dark:text-[#52525B]">
                   A showcase of my recent work where design and engineering meets. Each<br />
