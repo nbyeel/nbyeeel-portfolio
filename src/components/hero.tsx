@@ -177,8 +177,8 @@ export function Hero() {
                       >
                         <svg 
                           xmlns="http://www.w3.org/2000/svg" 
-                          width="20" 
-                          height="20" 
+                          width="clamp(14px, 3vw, 20px)" 
+                          height="clamp(14px, 3vw, 20px)" 
                           viewBox="0 0 24 24" 
                           fill="none" 
                           stroke="currentColor" 
@@ -215,8 +215,8 @@ export function Hero() {
                       >
                         <svg 
                           xmlns="http://www.w3.org/2000/svg" 
-                          width="15" 
-                          height="15" 
+                          width="clamp(12px, 2.5vw, 15px)" 
+                          height="clamp(12px, 2.5vw, 15px)" 
                           viewBox="0 0 24 24" 
                           fill="none" 
                           stroke="currentColor" 
@@ -234,12 +234,13 @@ export function Hero() {
                     </div>
                     
                     {/* Light Indicator Circle (Fixed on Top Right) */}
-                    <div className="absolute right-2 top-2 m-2 flex size-6 items-center justify-center rounded-full bg-gradient-to-b from-[#2D313C] to-[#9B9EA6] lg:size-8">
-                      <div className="flex size-4 items-center justify-center rounded-full bg-gradient-to-b from-[#21242D] to-[#5E626D] lg:size-6">
-                        <div className="relative size-3 rounded-full border border-[#353535] bg-gradient-radial from-[#939393] to-[#606060] lg:size-4">
-                          <div className="absolute left-1/2 top-0 size-2 -translate-x-1/2 rounded-full bg-gradient-to-b from-[#FFFFFE] to-[#B6B6B6]/0 lg:size-3"></div>
+                    <div className="absolute right-1 sm:right-2 top-1 sm:top-2 m-1 sm:m-2 flex items-center justify-center rounded-full bg-gradient-to-b from-[#2D313C] to-[#9B9EA6]" style={{ width: 'clamp(20px, 4vw, 32px)', height: 'clamp(20px, 4vw, 32px)' }}>
+                      <div className="flex items-center justify-center rounded-full bg-gradient-to-b from-[#21242D] to-[#5E626D]" style={{ width: 'clamp(16px, 3vw, 24px)', height: 'clamp(16px, 3vw, 24px)' }}>
+                        <div className="relative rounded-full border border-[#353535] bg-gradient-radial from-[#939393] to-[#606060]" style={{ width: 'clamp(12px, 2.5vw, 16px)', height: 'clamp(12px, 2.5vw, 16px)' }}>
+                          <div className="absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-gradient-to-b from-[#FFFFFE] to-[#B6B6B6]/0" style={{ width: 'clamp(8px, 1.5vw, 12px)', height: 'clamp(8px, 1.5vw, 12px)' }}></div>
                           <motion.div 
-                            className="size-2 rounded-full bg-yellow-300 blur-[1px] transition-opacity duration-300 lg:size-4"
+                            className="rounded-full bg-yellow-300 blur-[1px] transition-opacity duration-300"
+                            style={{ width: 'clamp(8px, 1.5vw, 16px)', height: 'clamp(8px, 1.5vw, 16px)' }}
                             animate={{
                               opacity: isDarkMode ? 1 : 0,
                             }}
@@ -249,7 +250,8 @@ export function Hero() {
                             }}
                           ></motion.div>
                           <motion.div 
-                            className="absolute size-2 rounded-full bg-yellow-300 blur-[10px] transition-opacity duration-300 lg:size-4"
+                            className="absolute rounded-full bg-yellow-300 blur-[10px] transition-opacity duration-300"
+                            style={{ width: 'clamp(8px, 1.5vw, 16px)', height: 'clamp(8px, 1.5vw, 16px)' }}
                             animate={{
                               opacity: isDarkMode ? 1 : 0,
                             }}
