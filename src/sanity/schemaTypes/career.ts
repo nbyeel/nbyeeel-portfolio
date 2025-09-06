@@ -9,34 +9,34 @@ export const career = defineType({
       name: 'role',
       title: 'Role/Position',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'company',
       title: 'Company',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'period',
       title: 'Period',
       type: 'string',
       description: 'e.g., "2023 - Present" or "2021 - 2023"',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 4,
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'order',
       title: 'Order',
       type: 'number',
       description: 'Lower numbers appear first (most recent should be 1)',
-      validation: (Rule: any) => Rule.required().min(1),
+      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: 'isCurrent',
@@ -61,7 +61,7 @@ export const career = defineType({
       subtitle: 'company',
       period: 'period'
     },
-    prepare(selection: any) {
+    prepare(selection) {
       const { title, subtitle, period } = selection
       return {
         title: title,

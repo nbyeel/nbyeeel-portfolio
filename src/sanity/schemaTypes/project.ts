@@ -21,7 +21,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -31,14 +31,14 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 3,
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'shortInfo',
@@ -61,7 +61,7 @@ export default defineType({
             hotspot: true,
             accept: 'image/jpeg, image/png, image/webp, image/gif',
           },
-          validation: (Rule: any) => Rule.required().error('Cover image is required'),
+          validation: (Rule) => Rule.required().error('Cover image is required'),
           description: 'Upload the main cover image for this project',
         },
         {
@@ -77,7 +77,7 @@ export default defineType({
             layout: 'radio',
           },
           initialValue: 'landscape',
-          validation: (Rule: any) => Rule.required().error('Please select an orientation'),
+          validation: (Rule) => Rule.required().error('Please select an orientation'),
           description: 'Choose how the cover image should be displayed. Landscape is recommended for project cards.',
         },
         {
@@ -93,7 +93,7 @@ export default defineType({
           title: 'alt',
           orientation: 'orientation',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { media, title, orientation } = selection
           return {
             title: title || 'Cover Image',
@@ -123,14 +123,14 @@ export default defineType({
             ],
           },
           initialValue: 'ui-ux-design',
-          validation: (Rule: any) => Rule.required(),
+          validation: (Rule) => Rule.required(),
         },
         {
           name: 'customText',
           title: 'Custom Project Type',
           type: 'string',
-          hidden: ({ parent }: any) => parent?.type !== 'custom',
-          validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+          hidden: ({ parent }) => parent?.type !== 'custom',
+          validation: (Rule) => Rule.custom((value, context: any) => {
             if (context.parent?.type === 'custom' && !value) {
               return 'Custom text is required when "Custom" is selected'
             }
@@ -138,13 +138,13 @@ export default defineType({
           }),
         },
       ],
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
       preview: {
         select: {
           type: 'type',
           customText: 'customText',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { type, customText } = selection
           return {
             title: type === 'custom' ? customText : type?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
@@ -172,14 +172,14 @@ export default defineType({
             ],
           },
           initialValue: 'designer-developer',
-          validation: (Rule: any) => Rule.required(),
+          validation: (Rule) => Rule.required(),
         },
         {
           name: 'customText',
           title: 'Custom Role',
           type: 'string',
-          hidden: ({ parent }: any) => parent?.type !== 'custom',
-          validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+          hidden: ({ parent }) => parent?.type !== 'custom',
+          validation: (Rule) => Rule.custom((value, context: any) => {
             if (context.parent?.type === 'custom' && !value) {
               return 'Custom text is required when "Custom" is selected'
             }
@@ -187,13 +187,13 @@ export default defineType({
           }),
         },
       ],
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
       preview: {
         select: {
           type: 'type',
           customText: 'customText',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { type, customText } = selection
           return {
             title: type === 'custom' ? customText : type?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
@@ -221,14 +221,14 @@ export default defineType({
             ],
           },
           initialValue: 'ui-ux-design',
-          validation: (Rule: any) => Rule.required(),
+          validation: (Rule) => Rule.required(),
         },
         {
           name: 'customText',
           title: 'Custom Category',
           type: 'string',
-          hidden: ({ parent }: any) => parent?.type !== 'custom',
-          validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+          hidden: ({ parent }) => parent?.type !== 'custom',
+          validation: (Rule) => Rule.custom((value, context: any) => {
             if (context.parent?.type === 'custom' && !value) {
               return 'Custom text is required when "Custom" is selected'
             }
@@ -236,13 +236,13 @@ export default defineType({
           }),
         },
       ],
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
       preview: {
         select: {
           type: 'type',
           customText: 'customText',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { type, customText } = selection
           return {
             title: type === 'custom' ? customText : type?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
@@ -261,7 +261,7 @@ export default defineType({
           type: 'text',
           rows: 4,
           description: 'Describe the main challenges and problems this project aimed to solve',
-          validation: (Rule: any) => Rule.required().error('Please describe the project challenge'),
+          validation: (Rule) => Rule.required().error('Please describe the project challenge'),
         },
         {
           name: 'solution',
@@ -269,7 +269,7 @@ export default defineType({
           type: 'text',
           rows: 4,
           description: 'Explain how you approached and solved the challenges',
-          validation: (Rule: any) => Rule.required().error('Please describe the project solution'),
+          validation: (Rule) => Rule.required().error('Please describe the project solution'),
         },
       ],
       options: {
@@ -281,7 +281,7 @@ export default defineType({
           challenge: 'challenge',
           solution: 'solution',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { challenge, solution } = selection
           const challengePreview = challenge ? challenge.substring(0, 100) + (challenge.length > 100 ? '...' : '') : 'No challenge described'
           const solutionPreview = solution ? solution.substring(0, 100) + (solution.length > 100 ? '...' : '') : 'No solution described'
@@ -311,7 +311,7 @@ export default defineType({
               layout: 'radio',
             },
             initialValue: 'image',
-            validation: (Rule: any) => Rule.required().error('Please select a media type'),
+            validation: (Rule) => Rule.required().error('Please select a media type'),
             description: 'Choose whether this is an image or video',
           },
           {
@@ -321,8 +321,8 @@ export default defineType({
             options: {
               accept: 'image/jpeg, image/png, image/webp, image/gif',
             },
-            hidden: ({ parent }: any) => parent?.mediaType !== 'image',
-            validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+            hidden: ({ parent }) => parent?.mediaType !== 'image',
+            validation: (Rule) => Rule.custom((value, context: any) => {
               if (context.parent?.mediaType === 'image' && !value) {
                 return 'Image is required when media type is image'
               }
@@ -336,8 +336,8 @@ export default defineType({
             options: {
               accept: 'video/mp4, video/webm, video/ogg, video/quicktime, video/x-msvideo, video/x-ms-wmv',
             },
-            hidden: ({ parent }: any) => parent?.mediaType !== 'video',
-            validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+            hidden: ({ parent }) => parent?.mediaType !== 'video',
+            validation: (Rule) => Rule.custom((value, context: any) => {
               if (context.parent?.mediaType === 'video' && !value) {
                 return 'Video is required when media type is video'
               }
@@ -357,7 +357,7 @@ export default defineType({
               layout: 'radio',
             },
             initialValue: 'portrait',
-            validation: (Rule: any) => Rule.required().error('Please select an orientation'),
+            validation: (Rule) => Rule.required().error('Please select an orientation'),
             description: 'Choose how this media should be displayed',
           },
           {
@@ -432,7 +432,7 @@ export default defineType({
             heading: 'heading',
             orientation: 'orientation',
           },
-          prepare(selection: any) {
+          prepare(selection) {
             const { media, mediaType, title, heading, orientation } = selection
             const displayTitle = heading || title || `${mediaType === 'video' ? 'Video' : 'Screenshot'}`
             return {
@@ -464,7 +464,7 @@ export default defineType({
             title: 'Process Step Title',
             type: 'string',
             description: 'Enter the title for this design process step (e.g., Research, Wireframing, Prototyping, Testing, etc.)',
-            validation: (Rule: any) => Rule.required().error('Please enter a title for this process step'),
+            validation: (Rule) => Rule.required().error('Please enter a title for this process step'),
           },
                      {
              name: 'icon',
@@ -494,9 +494,9 @@ export default defineType({
                    accept: 'image/svg+xml, image/png, image/jpeg, image/webp',
                    hotspot: false,
                  },
-                 hidden: ({ parent }: any) => parent?.type !== 'upload',
+                 hidden: ({ parent }) => parent?.type !== 'upload',
                  description: 'Upload your own SVG, PNG, JPEG, or WebP icon. Recommended size: 64x64px or larger.',
-                 validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+                 validation: (Rule) => Rule.custom((value, context: any) => {
                    if (context.parent?.type === 'upload' && !value) {
                      return 'Please upload an icon'
                    }
@@ -541,16 +541,16 @@ export default defineType({
                    ],
                    layout: 'dropdown',
                  },
-                 hidden: ({ parent }: any) => parent?.type !== 'predefined',
+                 hidden: ({ parent }) => parent?.type !== 'predefined',
                  description: 'Choose from our curated collection of icons',
                },
                {
                  name: 'customEmoji',
                  title: 'Custom Emoji',
                  type: 'string',
-                 hidden: ({ parent }: any) => parent?.type !== 'custom',
+                 hidden: ({ parent }) => parent?.type !== 'custom',
                  description: 'Enter any emoji you want (e.g., 🎨, 🚀, 💡, 📱, etc.)',
-                 validation: (Rule: any) => Rule.custom((value: any, context: any) => {
+                 validation: (Rule) => Rule.custom((value, context: any) => {
                    if (context.parent?.type === 'custom' && !value) {
                      return 'Please enter a custom emoji'
                    }
@@ -558,7 +558,7 @@ export default defineType({
                  }),
                },
              ],
-             validation: (Rule: any) => Rule.required().error('Please select or enter an icon'),
+             validation: (Rule) => Rule.required().error('Please select or enter an icon'),
            },
           {
             name: 'description',
@@ -566,7 +566,7 @@ export default defineType({
             type: 'text',
             rows: 3,
             description: 'Describe this design process step in detail',
-            validation: (Rule: any) => Rule.required().error('Please describe this process step'),
+            validation: (Rule) => Rule.required().error('Please describe this process step'),
           },
         ],
                  preview: {
@@ -578,7 +578,7 @@ export default defineType({
              customEmoji: 'icon.customEmoji',
              description: 'description',
            },
-           prepare(selection: any) {
+           prepare(selection) {
              const { title, iconType, uploadedIcon, predefinedIcon, customEmoji, description } = selection
              const descriptionPreview = description ? description.substring(0, 60) + (description.length > 60 ? '...' : '') : 'No description'
              return {
@@ -607,7 +607,7 @@ export default defineType({
               type: 'text',
               rows: 3,
               description: 'Describe the user experience achievements and impact',
-              validation: (Rule: any) => Rule.required().error('Please describe the user experience impact'),
+              validation: (Rule) => Rule.required().error('Please describe the user experience impact'),
             },
             {
               name: 'bulletPoints',
@@ -615,7 +615,7 @@ export default defineType({
               type: 'array',
               of: [{ type: 'string' }],
               description: 'Add key user experience achievements (e.g., Intuitive navigation, Responsive design)',
-              validation: (Rule: any) => Rule.required().min(1).error('Please add at least one achievement'),
+              validation: (Rule) => Rule.required().min(1).error('Please add at least one achievement'),
             },
           ],
           options: {
@@ -627,7 +627,7 @@ export default defineType({
               description: 'description',
               bulletPoints: 'bulletPoints',
             },
-            prepare(selection: any) {
+            prepare(selection) {
               const { description, bulletPoints } = selection
               const descriptionPreview = description ? description.substring(0, 60) + (description.length > 60 ? '...' : '') : 'No description'
               const bulletCount = bulletPoints ? bulletPoints.length : 0
@@ -649,7 +649,7 @@ export default defineType({
               type: 'text',
               rows: 3,
               description: 'Describe the technical achievements and impact',
-              validation: (Rule: any) => Rule.required().error('Please describe the technical excellence impact'),
+              validation: (Rule) => Rule.required().error('Please describe the technical excellence impact'),
             },
             {
               name: 'bulletPoints',
@@ -657,7 +657,7 @@ export default defineType({
               type: 'array',
               of: [{ type: 'string' }],
               description: 'Add key technical achievements (e.g., Modern tech stack, Optimized performance)',
-              validation: (Rule: any) => Rule.required().min(1).error('Please add at least one achievement'),
+              validation: (Rule) => Rule.required().min(1).error('Please add at least one achievement'),
             },
           ],
           options: {
@@ -669,7 +669,7 @@ export default defineType({
               description: 'description',
               bulletPoints: 'bulletPoints',
             },
-            prepare(selection: any) {
+            prepare(selection) {
               const { description, bulletPoints } = selection
               const descriptionPreview = description ? description.substring(0, 60) + (description.length > 60 ? '...' : '') : 'No description'
               const bulletCount = bulletPoints ? bulletPoints.length : 0
@@ -692,7 +692,7 @@ export default defineType({
           userExpBullets: 'userExperience.bulletPoints',
           techBullets: 'technicalExcellence.bulletPoints',
         },
-        prepare(selection: any) {
+        prepare(selection) {
           const { userExpDesc, techDesc, userExpBullets, techBullets } = selection
           const userExpCount = userExpBullets ? userExpBullets.length : 0
           const techCount = techBullets ? techBullets.length : 0
@@ -721,7 +721,7 @@ export default defineType({
       title: 'title',
       featured: 'featured',
     },
-    prepare(selection: any) {
+    prepare(selection) {
       const { featured } = selection
       return Object.assign({}, selection, {
         subtitle: featured ? 'Featured Project' : 'Project',

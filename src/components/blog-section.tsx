@@ -122,7 +122,7 @@ export function BlogSection() {
               <span className="text-[#a1a1aa] dark:text-[#52525B]">
                 This is where I try to write and share insights, case studies, and lessons from my<br />
                 experience in UI and UX design. If you are interested in exploring these topics further,<br />
-                please feelfree to contact me.
+                please feel free to contact me.
               </span>
             </p>
           </div>

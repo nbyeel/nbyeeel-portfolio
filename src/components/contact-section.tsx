@@ -14,10 +14,10 @@ export function ContactSection() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">
-            Let&apos;s Work Together
+            Let's Work Together
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12">

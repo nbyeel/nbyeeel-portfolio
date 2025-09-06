@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://nbyeeel.dev'),
+  metadataBase: new URL('http://localhost:3000'),
   alternates: {
     canonical: '/',
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Muhammad Nabeel - UI/UX Designer & Web Developer',
     description: 'UI/UX Designer and Web Developer from Gojra, Pakistan. Specializing in mobile app design, web development, and creating engaging user experiences.',
-    url: 'https://nbyeeel.dev',
+    url: 'http://localhost:3000',
     siteName: 'Muhammad Nabeel Portfolio',
     images: [
       {
