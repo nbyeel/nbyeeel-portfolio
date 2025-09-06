@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://nbyeeel.dev'),
   alternates: {
     canonical: '/',
   },
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Muhammad Nabeel - UI/UX Designer & Web Developer',
     description: 'UI/UX Designer and Web Developer from Gojra, Pakistan. Specializing in mobile app design, web development, and creating engaging user experiences.',
-    url: 'http://localhost:3000',
+    url: 'https://nbyeeel.dev',
     siteName: 'Muhammad Nabeel Portfolio',
     images: [
       {
-        url: '/icon.svg',
-        width: 32,
-        height: 32,
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
         alt: 'Muhammad Nabeel - UI/UX Designer & Web Developer',
       },
     ],
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Muhammad Nabeel - UI/UX Designer & Web Developer',
     description: 'UI/UX Designer and Web Developer from Gojra, Pakistan. Specializing in mobile app design, web development, and creating engaging user experiences.',
-    images: ['/icon.svg'],
+    images: ['/og-image.svg'],
   },
   robots: {
     index: true,
